@@ -1,0 +1,60 @@
+--client/src/pages/FormBuilder.jsx--
+
+import { useState } from 'react';
+        </button>
+
+        <button
+          onClick={() => addField('dropdown')}
+          className='bg-blue-500 text-white px-3 py-2 rounded'
+        >
+          Dropdown
+        </button>
+      </div>
+
+      {fields.map((field, index) => (
+        <div key={index} className='border p-4 rounded mb-4'>
+          <input
+            type='text'
+            placeholder='Field Label'
+            className='border p-2 w-full mb-2'
+            value={field.label}
+            onChange={(e) =>
+              updateField(index, 'label', e.target.value)
+            }
+          />
+
+          <input
+            type='text'
+            placeholder='Placeholder'
+            className='border p-2 w-full mb-2'
+            value={field.placeholder}
+            onChange={(e) =>
+              updateField(index, 'placeholder', e.target.value)
+            }
+          />
+
+          <div className='flex items-center gap-2'>
+            <input
+              type='checkbox'
+              checked={field.required}
+              onChange={(e) =>
+                updateField(index, 'required', e.target.checked)
+              }
+            />
+
+            <span>Required</span>
+          </div>
+        </div>
+      ))}
+
+      <button
+        onClick={saveForm}
+        className='bg-green-600 text-white px-6 py-2 rounded'
+      >
+        Save Form
+      </button>
+    </div>
+  );
+}
+
+export default FormBuilder;
