@@ -1,0 +1,74 @@
+--client/src/pages/PublicForm.jsx--
+
+
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import API from '../services/api';
+
+function PublicForm() {
+  const { id } = useParams();
+
+  const [form, setForm] = useState(null);
+  const [answers, setAnswers] = useState({});
+
+  useEffect(() => {
+    fetchForm();
+  }, []);
+
+  const fetchForm = async () => {
+    const { data } = await API.get(`/forms/${id}`);
+    setForm(data);
+  };
+
+  const handleChange = (label, value) => {
+    setAnswers({
+      ...answers,
+      [label]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await API.post(`/responses/${id}`, answers);
+
+    alert('Response Submitted');
+  };
+
+  if (!form) return <p>Loading...</p>;
+
+  return (
+    <div className='max-w-2xl mx-auto p-6'>
+      <h1 className='text-3xl font-bold mb-2'>{form.title}</h1>
+      <p className='mb-6'>{form.description}</p>
+
+      <form onSubmit={handleSubmit} className='space-y-4'>
+        {form.fields.map((field, index) => (
+          <div key={index}>
+            <label className='block mb-2 font-medium'>
+              {field.label}
+            </label>
+
+            {field.type === 'text' && (
+              <input
+                type='text'
+                placeholder={field.placeholder}
+                required={field.required}
+                className='border p-2 w-full'
+                onChange={(e) =>
+                  handleChange(field.label, e.target.value)
+                }
+              />
+            )}
+
+            {field.type === 'textarea' && (
+              <textarea
+                placeholder={field.placeholder}
+                required={field.required}
+                className='border p-2 w-full'
+                onChange={(e) =>
+                  handleChange(field.label, e.target.value)
+                }
+              />
+            )}
+export default PublicForm;
