@@ -1,0 +1,20 @@
+--client/src/App.js--
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import FormBuilder from './pages/FormBuilder';
+import PublicForm from './pages/PublicForm';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/builder' element={<FormBuilder />} />
+        <Route path='/form/:id' element={<PublicForm />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
