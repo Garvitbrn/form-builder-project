@@ -1,0 +1,47 @@
+-- server/routes/formRoutes.js--
+
+const express = require('express');
+const Form = require('../models/Form');
+const protect = require('../middleware/authMiddleware');
+
+const router = express.Router();
+
+router.post('/', protect, async (req, res) => {
+  try {
+    const form = await Form.create({
+      ...req.body,
+      createdBy: req.user.id,
+    });
+
+    res.status(201).json(form);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.get('/', protect, async (req, res) => {
+  const forms = await Form.find({ createdBy: req.user.id });
+  res.json(forms);
+});
+
+router.get('/:id', async (req, res) => {
+  const form = await Form.findById(req.params.id);
+  res.json(form);
+});
+
+router.put('/:id', protect, async (req, res) => {
+  const updatedForm = await Form.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+
+  res.json(updatedForm);
+});
+
+router.delete('/:id', protect, async (req, res) => {
+  await Form.findByIdAndDelete(req.params.id);
+  res.json({ message: 'Form Deleted' });
+});
+
+module.exports = router;
