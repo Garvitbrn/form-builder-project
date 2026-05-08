@@ -5,48 +5,48 @@ Dynamic Form Builder – Full Stack Web Application:
   Built as a full stack development project using modern web technologies.
 
 Features:
-  User Authentication (Login/Register)
-  Dynamic Form Builder
-  Multiple Field Types
-  Form Management System
-  Public Form Access
-  Response Collection & Storage
-  Responsive UI Design
-  Secure REST APIs
+  User Authentication (Login/Register),
+  Dynamic Form Builder,
+  Multiple Field Types,
+  Form Management System,
+  Public Form Access,
+  Response Collection & Storage,
+  Responsive UI Design,
+  Secure REST APIs.
 
 Supported Field Types:
-  Text Input
-  Textarea
-  Dropdown
-  Checkbox
-  Radio Button
-  Email Field
-  Number Field
+  Text Input,
+  Textarea,
+  Dropdown,
+  Checkbox,
+  Radio Button,
+  Email Field,
+  Number Field.
 
 Tech Stack:
   Frontend:
-    HTML5
-    CSS3
-    JavaScript
-    React.js
-    Tailwind CSS
+    HTML5,
+    CSS3,
+    JavaScript,
+    React.js,
+    Tailwind CSS.
   Backend:
-    Node.js
-    Express.js
+    Node.js,
+    Express.js.
   Database:
-    MongoDB
+    MongoDB.
   Authentication:
-    JWT
-    bcryptjs
+    JWT,
+    bcryptjs.
 
 Features Included:
-  Dynamic Form Creation
-  Authentication System
-  Response Management
-  Responsive Design
-  REST APIs
-  Secure Backend
+  Dynamic Form Creation,
+  Authentication System,
+  Response Management,
+  Responsive Design,
+  REST APIs,
+  Secure Backend.
 
 Author:
-  Garvit Goyal
+  Garvit Goyal,
   Full Stack Web Development Project
